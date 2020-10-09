@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    菜单css-->
+    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css"/>
+    <!--    表格css-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/xsfx.css">
+    <!--    页面下方布局-->
+    <link rel="stylesheet" href="/css/common.css"/>
+    <!--    菜单栏动态-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/work.js"></script>
+    <!--    日历动态-->
+    <script src="js/laydate.js"></script>
+</head>
+<style>
+    /*tbody tr:nth-child(even) {*/
+    /*    background: #ccc*/
+    /*}*/
+</style>
+
+<body>
+<!--菜单栏-->
+<div class="head_warp">
+    <div class="head">
+        <div class="navbg">
+            <div class="col960 float-left">
+                <ul id="navul" class="cl">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="#" title="Html">航班数据统计</a>
+                        <ul>
+                            <li><a href="dayanalysis.html" title="日延误统计">日延误统计</a></li>
+                            <li><a href="monthanalysis.html" title="月延误统计">月延误统计</a></li>
+                            <li><a href="yearanalysis.html" title="年延误统计">年延误统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" title="航班信息">航班信息</a>
+                        <ul>
+                            <li><a href="jsp7.jsp" title="航班信息查询">航班信息查询</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" title="航班调整">航班调整</a>
+                        <ul>
+                            <li><a href="#" title="调整页面">调整页面</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="float-right"
+                 style="background-color: #1e90ff;padding: 8px 10px;font-size: 14px;border-radius: 3px;">
+                <a href="testlogin.html" style="color: #fff;" id="login">登录/注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--航班显示界面-->
+<div style="background: #88b7e4;width: 100%; position: absolute;margin: 0 auto;">
+    <div class="data_wrap">
+        <!--表单提交-->
+        <div class="my_duxs_time">
+            <form action="controller/findByEs" method="post" id="conditionform">
+
+                <label class="my_setlabel">
+                    <!--                    日历模块-->
+                    <div>
+                        出发时间：<input type="text" style="width: 200px" name="date_start" id="laydateInput" placeholder="出发时间" autocomplete="off"/>
+                    </div>
+                </label>
+
+                <label class="my_setlabel"><span style="padding-right: 24px;">航班号：</span>
+                    <input style="width: 222px;" type="text" name="flightnumber" placeholder="航班号"/>
+                </label>
+                <label class="my_setlabel">机场：
+                    <select id="leimu" style="width: 176px" name="originairport">
+                        <option value=""></option>
+                        <option value="ZBAA">首都机场</option>
+                        <option value="ZBAD">大兴机场</option>
+                        <option value="ZBTJ">天津滨海国际机场</option>
+                        <option value="ZBSJ">石家庄机场</option>
+
+                    </select>
+                </label>
+                <input id="shaixuan" value="提交" style="text-align: center">
+                <button id="czbtn">重置</button>
+            </form>
+
+
+        </div>
+<!--        显示表格-->
+        <div style="width: 100%;min-height:800px;max-height: 1100px;overflow: auto">
+            <table  class="my_table tablesorter" cellspacing="0" width="95%" border="1" cellpadding="2" cellspacing="1" style="background: white; border: 2px;" align="center">
+                <thead>
+                <tr align="center">
+                    <td class="cellstyle " nowrap style="text-align: center">机型</td>
+                    <td class="cellstyle " nowrap>航班号</td>
+                    <td class="cellstyle " nowrap>飞机尾号</td>
+                    <td class="cellstyle " nowrap>日期</td>
+                    <td class="cellstyle " nowrap>起飞机场</td>
+                    <td class="cellstyle " nowrap>出发时间</td>
+                    <td class="cellstyle " nowrap>目的机场</td>
+                    <td class="cellstyle " nowrap>到达时间</td>
+                    <td class="cellstyle " nowrap>高度</td>
+                    <td class="cellstyle " nowrap>延误状态</td>
+                </tr>
+                </thead>
+                <tbody id="filterBody">
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!--日历特效-->
+<script type="text/javascript">
+    laydate.render({
+        elem: '#laydateInput', //指定元素
+        min:'2018-4-1',
+        max:'2021-1-1',
+        formate:'yyyyMMdd',
+        done: function(value, date, endDate) {
+            console.log(value); //得到日期生成的值，如：2017-08-18
+            console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+            console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+        }
+    });
+</script>
+<!--Ajax获取数据-->
+<script>
+    $(function () {
+        var flightDate;
+        $.ajax({
+            type:"POST",
+            url:"controller/getAjaxPredict",
+            dateType:"Json",
+            async:false,
+            success: function (date) {
+                flightDate = date;
+            },
+            error:function () {
+                console.log("失败")
+            }
+
+        })
+        $.each(flightDate,function (n,item) {
+            console.log(item)
+            var cel;
+            switch (parseInt(item.predictClass)) {
+                case 0:
+                    cel = $("<tr><td>" + item.aircrafttype + "</td><td>"+ item.flightnumber + "</td><td>" + item.tailnumber + "</td><td>" + item.date + "</td><td>" + item.originairport +"</td><td>" + item.crsdepTime +"</td><td>" + item.destairport +"</td><td>" + item.crsarrTime +"</td><td>" + item.height + "</td><td style='color: green'>" + "不延误" + "</td><tr/>");
+                    break;
+                case 1:
+                    cel = $("<tr><td>" + item.aircrafttype + "</td><td>"+ item.flightnumber + "</td><td>" + item.tailnumber + "</td><td>" + item.date + "</td><td>" + item.originairport +"</td><td>" + item.crsdepTime +"</td><td>" + item.destairport +"</td><td>" + item.crsarrTime +"</td><td>" + item.height + "</td><td style='color: #ffe603'>" + "轻度延误" + "</td><tr/>");
+                    break;
+                case 2:
+                    cel = $("<tr><td>" + item.aircrafttype + "</td><td>"+ item.flightnumber + "</td><td>" + item.tailnumber + "</td><td>" + item.date + "</td><td>" + item.originairport +"</td><td>" + item.crsdepTime +"</td><td>" + item.destairport +"</td><td>" + item.crsarrTime +"</td><td>" + item.height + "</td><td style='color: #ff6802'>" + "中度延误" + "</td><tr/>");
+                    break;
+                case 3:
+                    cel = $("<tr><td>" + item.aircrafttype + "</td><td>"+ item.flightnumber + "</td><td>" + item.tailnumber + "</td><td>" + item.date + "</td><td>" + item.originairport +"</td><td>" + item.crsdepTime +"</td><td>" + item.destairport +"</td><td>" + item.crsarrTime +"</td><td>" + item.height + "</td><td style='color: #f80300'>" + "高度延误" + "</td><tr/>");
+                    break;
+                case 4:
+                    cel = $("<tr><td>" + item.aircrafttype + "</td><td>"+ item.flightnumber + "</td><td>" + item.tailnumber + "</td><td>" + item.date + "</td><td>" + item.originairport +"</td><td>" + item.crsdepTime +"</td><td>" + item.destairport +"</td><td>" + item.crsarrTime +"</td><td>" + item.height + "</td><td style='color: #590009'>" + "重度延误" + "</td><tr/>");
+                    break;
+            }
+            $("#filterBody").append(cel);
+        })
+
+    })
+</script>

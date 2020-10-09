@@ -1,0 +1,166 @@
+#main{
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+/*    background: url(../img/bg_.gif);*/
+}
+
+.head_warp{
+    width: 100%;
+    /*position: relative;*/
+    display: block;
+    position: fixed;
+    background-color: white;
+    z-index: 100;
+    /*background-image: url("/images/head-bg1.jpg");*/
+}
+.head{
+    min-width: 1440px;
+    max-width: 4096px;
+    display: table;
+    margin: auto;
+}
+body, div, ul, li{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:"微软雅黑", Arial, Helvetica, sans-serif;
+    color:#333333;
+    line-height:25px;
+    font-size:14px;
+}
+
+/*导航栏字体(未访问+访问后)*/
+a:link, a:visited{
+    text-decoration:none;
+    color: #222;
+    font-size: 1.1rem;
+}
+
+ul, ul li {
+    list-style-type:none;
+}
+
+.cl {
+    zoom:1;
+}
+
+/*网站头部*/
+.col960 {
+    width:960px;
+    margin:auto;
+}
+
+/*导航栏背景设置*/
+.navbg {
+    padding: 20px 0;
+    height: 80px;
+    margin: 0 auto;
+}
+
+/*导航栏文字设置*/
+#navul li {
+    float: left;
+    margin-right: 2rem;
+    width:150px;
+    height:40px;
+    position:relative;
+    text-align:center;
+    line-height:40px;
+}
+#navul li.navhome {
+    text-align:center;
+    padding:0 0 0 40px;
+    width:60px;
+}
+
+/*导航栏鼠标悬停子菜单设置*/
+#navul li ul {
+    display:none;
+    position:absolute;
+    z-index:10;
+    top:40px;
+    background:rgba(255,255,255,0.8);
+    box-shadow: 0 0 10px 1px lightgray;
+    border-radius: 10px;
+}
+
+/*导航栏子菜单设置*/
+#navul li ul li {
+    display:block;
+    width:150px;
+    float:none;
+    margin-right:0;
+    height:40px;
+    position:relative;
+    line-height:40px;
+    font-size:12px;
+}
+
+
+
+/*导航栏鼠标悬停*/
+#navul li.navmoon {
+    width:150px;
+    height:40px;
+    line-height:40px;
+}
+
+/*鼠标悬停,子菜单字体颜色*/
+#navul li.navmoon a {
+    color:#315efb;
+}
+
+#navul li.navmoon ul {
+    display:block;
+}
+
+/*子菜单超链接格式*/
+#navul li.navmoon ul a {
+    display:block;
+    width:150px;
+    height:40px;
+    line-height:40px;
+}
+
+/*子菜单鼠标悬停效果设置*/
+#navul li.navmoon ul a:hover {
+    background: #1e90ff;
+    color: #fff;
+}
+
+/*单独设置第一个和最后一个的鼠标悬停效果*/
+#navul li.navmoon ul li:first-child a:hover {
+    /*上圆角*/
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#navul li.navmoon ul li:last-child a:hover {
+    /*下圆角*/
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/*滚轮下滑，改变导航栏背景*/
+.head_warp.headerMain-bg{
+    background: url("/images/head-bg1.jpg");
+}
+/*滚轮下滑，改变导航栏文字颜色及超链接效果*/
+.cl.text-color li a{
+    color: white;
+}
+#navul.text-color li.navmoon a{
+    color: white;
+    font-weight: bold;
+}
+#navul.text-color li.navmoon ul li a{
+    color: #315efb;
+    font-weight: normal;
+}
+#navul.text-color li.navmoon ul li a:hover{
+    color: #fff;
+    font-weight: normal;
+}

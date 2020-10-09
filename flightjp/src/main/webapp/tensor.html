@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Load TensorFlow.js -->
+    <!-- Get latest version at https://github.com/tensorflow/tfjs -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest">
+    </script>
+</head>
+
+<body>
+<div id="output_field"></div>
+</body>
+
+<script>
+    async function learnLinear(){
+        const csvURL ='minmax.csv';
+        const numOfFeatures = 13;
+        const numOfSamples = 48;
+        const trainingData = tf.data.csv(csvURL,{
+            columnConfigs:{
+                DelayMinutes: {
+                    isLabel: true
+                }
+            }
+        });
+        const convertedData =
+            trainingData.map(({xs,ys}) =>{
+                return{xs:Object.values(xs),ys:Object.values(ys)}
+            }).batch(10);
+        const model = tf.sequential();
+        model.add(tf.layers.dense({
+            units: 1,
+            inputShape: [13]
+        }));
+
+        model.compile({
+            loss: 'meanSquaredError',
+            optimizer: 'sgd'
+        });
+
+
+
+        await model.fitDataset(convertedData,
+            {
+                epochs:100,
+                callbacks:{
+                    onEpochEnd:async(epoch,logs) =>{
+                        console.log("Epoch: " +epoch +"Loss: "+logs.loss);
+                    }
+                }
+            });
+
+        document.getElementById('output_field').innerText =
+            model.predict( tf.tensor2d([0,2,2,0.423236515,15,0,0,0,0,0,0.379310345,0,0], [1, 13]) );
+    }
+
+    learnLinear();
+</script>
+
+</head>
+
+</html>

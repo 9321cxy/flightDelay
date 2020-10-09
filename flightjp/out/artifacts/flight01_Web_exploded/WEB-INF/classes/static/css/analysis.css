@@ -1,0 +1,190 @@
+.table-list {
+    padding-top: 10px;
+    border: 1px solid #dedede;
+    border-bottom: 10px;
+    background-color: white;
+}
+
+div.table-list table.list th {
+    height: 16px;
+    line-height: 16px;
+    padding: 15px 20px 0 25px;
+    text-align: right;
+    color: #5b5d61;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.overview-card-title-container {
+    padding: 15px 15px 0
+}
+
+.overview-card-title {
+    font-size: 1.1rem;
+    color: #222;
+    font-weight: 700;
+    padding-left: 10px;
+}
+
+.list {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1rem;
+    table-layout: fixed;
+}
+
+
+tr.title{
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    padding: 20px 20px 10px;
+    background-color: white;
+    margin-top: 1px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+/*table.list .highlight td.normal {*/
+/*    padding-left: 25px;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*    text-align: left;*/
+/*}*/
+
+table.list tr td.normal {
+    padding-left: 25px;
+    width: 85px;
+    text-align: right;
+}
+
+table.list tbody tr.highlight:hover {
+    color: #315efb;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.empty-tr0 {
+    width: 1px;
+    padding: 6px 19px 6px 0;
+    border-left: 0
+}
+
+table.list tr.empty-tr1 {
+    height: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+table.list tr td {
+    border-left: 1px solid #f0f0f0;
+    padding: 6px 20px 6px 5px;
+    height: 17px;
+    line-height: 17px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.rrow-down {
+    background-repeat: no-repeat;
+    background-position: 97% 9px;
+    background-image: url(/images/arrow-down.png);
+}
+
+#airtable {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 23px;
+}
+
+#airtable tbody tr td {
+    width: 33%;
+    height: 60px;
+    font-size: 30px;
+    padding-left: 20px;
+    border-right: 1px solid #ededef;
+    font-family: Arial;
+}
+
+.airtable-title {
+    font-size: 16px;
+    color: #5d5d61;
+    margin-bottom: 5px;
+}
+
+.airtable-title + div span {
+    font-size: 18px;
+}
+
+.air-type-dly {
+    color: red;
+}
+
+.air-type-ont {
+    color: rgb(47, 255, 75);
+}
+
+.visit-type-detail-name,
+.visit-type-detail-new,
+.visit-type-detail-old {
+    width: 30%;
+    text-align: center;
+    color: #787a7d;
+}
+
+#airtable-bottom {
+    width: 100%;
+}
+
+#airtable-bottom tr td {
+    border: 1px solid #ededef;
+    height: 39px;
+    line-height: 39px;
+    padding-bottom: 0;
+    color: #414448;
+    font-size: 1.1rem;
+}
+
+/*.title {*/
+/*    padding: 20px 20px 10px;*/
+/*    background-color: white;*/
+/*    margin-top: 1px;*/
+/*}*/
+
+div.l {
+    color: #323437;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline;
+}
+
+.r {
+    display: inline;
+    float: right;
+}
+
+a.detail-report-btn {
+    background-repeat: no-repeat;
+    background-position: left 0;
+    display: inline-block;
+    text-align: center;
+    width: 18px;
+    height: 18px;
+}
+
+.circlegrey {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: grey;
+    display: inline-block;
+}
+
+.circlewhite {
+    width: 6px;
+    height: 6px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+}

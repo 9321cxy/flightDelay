@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>月延误统计</title>
+    <!--    菜单css-->
+    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/analysis.css" rel="stylesheet" type="text/css"/>
+    <!--    菜单栏动态-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/work.js"></script>
+
+    <script src="/js/echarts.min.js"></script>
+    <!--    日历动态-->
+    <script src="js/laydate.js"></script>
+</head>
+
+<body>
+<!--菜单栏-->
+<div class="head_warp"  id="headerMain">
+    <div class="head">
+        <div class="navbg">
+            <div class="col960 float-left">
+                <ul id="navul" class="cl">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="#">航班数据统计</a>
+                        <ul>
+                            <li><a href="dayanalysis.html"   >日延误统计</a></li>
+                            <li><a href="monthanalysis.html" >月延误统计</a></li>
+                            <li><a href="yearanalysis.html"  >年延误统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">航班信息</a>
+                        <ul>
+                            <li><a href="jsp7.jsp">航班信息查询</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">延误预测</a>
+                        <ul>
+                            <li><a href="predict.html">航班延误预测</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">航班调整</a>
+                        <ul>
+                            <li><a href="Flight_adjustment.jsp">航班查询调整</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="float-right"
+                 style="background-color: #1e90ff;padding: 8px 10px;font-size: 14px;border-radius: 3px;">
+                <a href="testlogin.html" style="color: #fff;" id="login">登录/注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--信息栏-->
+<div style="background: #88b7e4;width: 98%; position: absolute;padding-top: 80px;margin: 0 auto;">
+
+    <div class="data_wrap">
+        <div>
+        <!--日历模块-->
+        <div class="float-left overview-card-title" style="margin-left: 10%">日期：
+            <input type="text" name="date_start" id="laydateInput" placeholder="出发时间" autocomplete="off"/>
+        </div>
+            <div style="clear: both"></div>
+        </div>
+        <div style="position: relative;background-color: white;overflow-y: hidden;height:451px;" id="airportanly">
+            <div>
+                <div class="title">
+                    <div class="l">本月首都机场航班状态</div>
+                    <div class="r">
+                        <a class="detail-report-btn" href="" id="beijing" target="_blank">
+                            <p>>></p>
+                        </a>
+                    </div>
+                </div>
+
+                <div style="height: 400px;padding: 0 20px; width: 69.5%;background-color: white;display: inline-block;">
+                    <table id="airtable">
+                        <tbody>
+                        <tr>
+                            <td style="text-align: center;">
+                                <img src="/images/ZBAA.jpg" style="height: 60px;">
+                            </td>
+                            <td class="air-type-dly">
+                                <div class="airtable-title">
+                                    起飞延误航班
+                                </div>
+                                <div>
+                                    27.27
+                                    <span>%</span>
+                                </div>
+                            </td>
+                            <td class="air-type-ont">
+                                <div class="airtable-title">
+                                    到达延误航班
+                                </div>
+                                <div>
+                                    19.52
+                                    <span>%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table id="airtable-bottom">
+                        <tbody>
+                        <tr>
+                            <td class="visit-type-detail-name">15~30min</td>
+                            <td class="visit-type-detail-new">118</td>
+                            <td class="visit-type-detail-new">622</td>
+                        </tr>
+                        <tr>
+                            <td class="visit-type-detail-name">30~45min</td>
+                            <td class="visit-type-detail-new">56</td>
+                            <td class="visit-type-detail-new">72</td>
+                        </tr>
+                        <tr>
+                            <td class="visit-type-detail-name">>45min</td>
+                            <td class="visit-type-detail-new">36</td>
+                            <td class="visit-type-detail-old">25</td>
+                        </tr>
+                        <tr>
+                            <td class="visit-type-detail-name">平均延误时长（min）</td>
+                            <td class="visit-type-detail-new">25</td>
+                            <td class="visit-type-detail-old">30</td>
+                        </tr>
+                        <tr>
+                            <td class="visit-type-detail-name">延误发生最多时段</td>
+                            <td class="visit-type-detail-new">11：00~15：00</td>
+                            <td class="visit-type-detail-old">12：00~17：00</td>
+                        </tr>
+                        <tr>
+                            <td class="visit-type-detail-name">延误次数最多</td>
+                            <td class="visit-type-detail-new">CQH8587</td>
+                            <td class="visit-type-detail-old">HBH3527</td>
+                        </tr>
+                        <tr>
+                            <td class="visit-type-detail-name">延误平均时间最长</td>
+                            <td class="visit-type-detail-new">CQH8566</td>
+                            <td class="visit-type-detail-old">CQH8692</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="main2"
+                     style="float: right; background-color: white;width: 30.5%;height: 400px;display: inline-block; border-left: 1px solid #ededef;">
+                </div>
+                <div style="clear: both"></div>
+
+            </div>
+        </div>
+        <div style="text-align: center;background-color: white;" id="circle">
+            <li class="circlewhite"></li>
+            <li class="circlegrey"></li>
+            <li class="circlegrey"></li>
+            <li class="circlegrey"></li>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<!--圆圈特效-->
+<script>
+    $(function () {
+        $("#circle").children().mouseenter(function () {
+            $(this).addClass("circlewhite").removeClass("circlegrey").siblings().addClass("circlegrey").removeClass("circlewhite")
+            var idx = $(this).index();
+            // console.log(idx)
+            $("#airportanly").children().eq(idx).show().siblings().hide();
+        })
+    })
+</script>
+<!--日历特效-->
+<script>
+    $(function () {
+        var chart2 = echarts.init(document.getElementById('main2'));
+        laydate.render({
+            elem: '#laydateInput', //指定元素
+            min: '2018-4-1',
+            format: 'yyyyMM',
+            type:'month',
+            done: function (value) {
+                //console.log(value); //得到日期生成的值，如：2017-08-18
+                // console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+                //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+                console.log(value)
+
+            }
+        });
+    })
+</script>
+<!--导航栏变色-->
+<script>
+    window.onscroll = function() {
+        var headerMain = document.getElementById('headerMain');
+        var navul = document.getElementById('navul');
+        if(window.pageYOffset >= 80){
+            headerMain.classList.add('headerMain-bg');
+            navul.classList.add('text-color');
+        } else {
+            headerMain.classList.remove('headerMain-bg');
+            navul.classList.remove('text-color');
+        }
+    }
+</script>

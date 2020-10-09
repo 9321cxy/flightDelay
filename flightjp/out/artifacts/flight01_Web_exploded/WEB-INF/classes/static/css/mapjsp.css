@@ -1,0 +1,203 @@
+#tabledelay td:last-child {
+    text-align: center;
+    border: 1px solid #cac1c1
+}
+
+/*tbody宽度*/
+#tabledelay td:nth-child(0),
+#tabledelay td:nth-child(1),
+#tabledelay td:nth-child(2),
+#tabledelay td:nth-child(3) {
+    text-align: center;
+    border: 1px solid #cac1c1;
+    width: 29%;
+}
+
+/*查询栏背景设置*/
+.backgroundimage{
+    background: url("/images/sky2.jpg") no-repeat 50% 0;
+    width: 100%;
+    background-size:100% 100% ;
+    text-align: center;
+    height: 300px;
+    min-width: 1440px;
+    position: relative;
+    z-index: 1;
+}
+
+.search{
+    max-width: 920px;
+    margin: 0 auto;
+    height: 300px;
+}
+.top_text{
+    padding-top: 40px;
+    color: #fff;
+    font-size: 26px;
+}
+
+.search_box{
+    padding-top: 40px;
+}
+
+/*航班查询框*/
+.search-box{
+    margin: 0 auto;
+}
+/*按航班号*/
+.search_bar_tog{
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background: #3d86e5;
+    text-decoration: none;
+    cursor: default;
+    border-radius:5px;
+    float: left;
+    margin-right: 40px;
+    font-size: 1rem;
+}
+
+/* 航班号输入框*/
+.search_input{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1rem;
+    box-shadow: 0 0 10px 1px lightgray;
+}
+
+/*日期输入框*/
+#laydateInput {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1rem;
+    box-shadow: 0 0 10px 1px lightgray;
+}
+
+/*查询按钮*/
+.y-btn-grey{
+    float:right;
+    display: inline-block;
+    height: 40px;
+    width: 160px;
+    text-align: center;
+    outline: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: #383c4c;
+}
+
+#tooltip {
+    position: absolute;
+    display: none;
+    border-style: solid;
+    white-space: nowrap;
+    z-index: 9999999;
+    transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+    background-color: rgba(50, 50, 50, 0.7);
+    border-width: 0;
+    border-color: rgb(51, 51, 51);
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    font: 14px / 21px "Microsoft YaHei";
+    padding: 5px;
+    left: 381px;
+    top: 85px;
+    pointer-events: none;
+}
+
+#tabledelay tbody tr:nth-child(even) {
+    background: #ccc;
+}
+
+table.tablesorter tbody tr td:nth-of-type(1) {
+    line-height: 40px;
+}
+
+div.tablestylemin {
+    width: 1060px;
+    height: 310px;
+    margin: 0 auto;
+}
+
+#tabledelay table {
+    display: inline-block;
+}
+
+#tabledelay tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+/*下部表格tbody*/
+#tabledelay table tbody {
+    width: 100%;
+    height: 510px;
+    font-size: 1rem;
+    overflow: hidden;
+    display: block;
+    overflow-y: auto;
+}
+#container {
+    width: 70%;
+    min-width: 1008px;
+    height: 1008px;
+    display: inline-block;
+    float: left;
+}
+/*下部表格宽度*/
+#tableleft{
+    width: 29%;
+    display: inline-block;
+    float: left;
+    padding-left: 10px;
+}
+#tableleft div div:first-child{
+    text-align: center;
+    height: 50px;
+    line-height: 4;
+    font-size: 1rem;
+    color:#080808;
+    font-weight: 800;
+}
+
+/*下部表格表头*/
+div #tabledelay table tr .cellstylemin {
+    text-align: center;
+    width: 29%;
+}
+/*下部柱状图*/
+#barContainer{
+    width: 100%;
+    height: 300px;
+    display: block;
+    float: left;
+}
+/*下部表格*/
+#tabledelay{
+    text-align: center;
+    width: 100%;
+    height: 700px;
+    display: block;
+    float: left;
+}

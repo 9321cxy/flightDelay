@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+<script>
+    async function run() {
+        const csvURL ='minmax.csv';
+        const trainingData = tf.data.csv(csvURL,{
+            columnConfigs:{
+                DelayMinutes: {
+                    isLabel: true
+                }
+            }
+        });
+        console.log(trainingData);
+        const numOfFeatures = 13;
+        const numOfSamples = 48;
+        const convertedData =
+            trainingData.map(({xs,ys}) =>{
+                return{xs:Object.values(xs),ys:Object.values(ys)}
+            }).batch(10);
+
+        const model = tf.sequential();
+        model.add(tf.layers.dense({inputShape : [numOfFeatures],activation:"sigmoid",units : 13}));
+        model.add(tf.layers.dense({units: 5,activation:"softmax"}));
+        model.compile({loss: 'categoricalCrossentropy', optimizer: 'adam'});
+        await model.fitDataset(convertedData,
+            {
+                epochs:500,
+                callbacks:{
+                    onEpochEnd:async(epoch,logs) =>{
+                        console.log("Epoch: " +epoch +"Loss: "+logs.loss);
+                    }
+                }
+            });
+        alert(model.predict(tf.tensor2d([0,2,2,0.423236515,15,0,0,0,0,0,0.379310345,0,0], [1, 13])));
+    }
+    run();
+</script>
+<body>
+
+</body>
+</html>
